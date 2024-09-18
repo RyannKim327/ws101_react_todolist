@@ -18,7 +18,7 @@
     height: 100%;
     box-sizing: border-box;
 
-    background-color: blue;
+    background-color: #dedede;
 
     display: flex;
     flex-direction: column;
