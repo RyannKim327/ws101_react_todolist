@@ -1,0 +1,8 @@
+/*
+ * NOTE: This file is created to separated the dark theme and light theme
+ * of the website based on the user's default. For reference, kindly visit
+ * https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme
+ */
+
+@media (prefers-color-scheme: dark) {
+}
