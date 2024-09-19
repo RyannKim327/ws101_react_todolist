@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 function Main(props) {
   const [todo, setTodo] = useState([]);
   useEffect(() => {
-    setTodo(JSON.parse(localStorage.getItem("todo")));
+    setTodo(JSON.parse(localStorage.getItem("todo") ?? []));
   }, localStorage.getItem("todo"));
 
   return (
