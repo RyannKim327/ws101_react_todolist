@@ -2,7 +2,7 @@ import Input from "./../widgets/input";
 import "./../stylesheets/field.css";
 import { useState } from "react";
 
-function Field() {
+function Field(props) {
   const [title, setTitle] = useState([]);
   const [content, setContent] = useState([]);
 
@@ -21,17 +21,25 @@ function Field() {
       alert("The minimum text characters for title is 4 and for content is 10");
       return;
     }
-    alert(`Title: ${title}\nContent: ${content}`);
+    let local = JSON.parse(localStorage.getItem("todo"));
+    if (!local) {
+      local = [];
+    }
+    local.push({
+      title: title,
+      content: content,
+    });
+    localStorage.setItem("todo", JSON.stringify(local));
   };
 
   return (
-    <div className="float">
+    <div className={`float ${props.className}`}>
       <span className="close">X</span>
-      <form>
+      <form onSubmit={addToDo}>
         <h1>Todo Form</h1>
         <Input placeholder="Title" id="title" onChange={setter} />
         <Input placeholder="Content" id="content" onChange={setter} />
-        <button onClick={addToDo}>Add Info</button>
+        <button onClick={addToDo}>Add ToDo</button>
       </form>
     </div>
   );

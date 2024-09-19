@@ -1,0 +1,23 @@
+.todo-frame {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
+
+  > div {
+    width: 50%;
+    box-sizing: border-box;
+    box-shadow: 1px 1px 5px rgba(33, 33, 33, 0.5);
+    padding: 0 0.5rem;
+    background-color: rgba(33, 33, 33, 0.1);
+    border-radius: 0.25rem;
+
+    > h3::first-letter {
+      margin-left: 0.5rem;
+    }
+
+    > h5::first-letter {
+      margin-left: 1rem;
+    }
+  }
+}

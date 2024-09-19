@@ -28,13 +28,12 @@
   }
 
   > input {
-    /* position: relative; */
     width: 100%;
     height: 100%;
-    border: none;
+    border: none !important;
     outline: none;
     box-sizing: border-box;
-    background-color: transparent;
+    background-color: transparent !important;
 
     &:focus {
       ~ span {

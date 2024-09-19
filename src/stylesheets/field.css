@@ -17,6 +17,7 @@
   flex-direction: column;
 
   user-select: none;
+  backdrop-filter: blur(40px);
 
   > .close {
     align-self: flex-end;
