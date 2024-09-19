@@ -10,19 +10,45 @@
   transform: translate(-50%, -50%);
 
   border: 1px red solid;
-  width: 50%;
+  width: 35%;
   height: 50%;
+
+  display: flex;
+  flex-direction: column;
+
+  user-select: none;
+
+  > .close {
+    align-self: flex-end;
+    font-size: 2rem;
+    font-family: sans-serif;
+    padding: 0 0.5rem;
+    cursor: pointer;
+    font-weight: bolder;
+
+    &:hover {
+      color: #ff5555;
+    }
+  }
 
   > form {
     width: 100%;
     height: 100%;
     box-sizing: border-box;
 
-    background-color: #dedede;
-
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 0 1rem;
+
+    > label,
+    > button {
+      border: 1px black solid;
+      padding: 1rem;
+      margin: 0.5rem 0;
+      width: 100%;
+      box-sizing: border-box;
+    }
   }
 }
 
