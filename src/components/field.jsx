@@ -28,6 +28,7 @@ function Field(props) {
     local.push({
       title: title,
       content: content,
+      done: false,
     });
     localStorage.setItem("todo", JSON.stringify(local));
   };

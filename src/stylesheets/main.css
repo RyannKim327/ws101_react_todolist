@@ -45,6 +45,30 @@
       > h5::first-letter {
         margin-left: 1rem;
       }
+
+      > div {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+
+        > button {
+          padding: 0.25rem 0.5rem;
+          margin: 0.25rem 0.5rem;
+          border-radius: 0.25rem;
+          border: 1px black solid;
+        }
+      }
+    }
+    > .done {
+      background-color: rgba(0, 150, 0, 0.5);
     }
   }
+}
+
+/*
+ * NOTE: This part is to separate the design for
+ * dark and light theme of the website
+ */
+
+@media (prefers-color-scheme: dark) {
 }
