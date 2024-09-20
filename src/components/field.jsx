@@ -21,7 +21,7 @@ function Field(props) {
       alert("The minimum text characters for title is 4 and for content is 10");
       return;
     }
-    let local = JSON.parse(localStorage.getItem("todo"));
+    let local = JSON.parse(localStorage.getItem("todo") ?? "[]");
     if (!local) {
       local = [];
     }
