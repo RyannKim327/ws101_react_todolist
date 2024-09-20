@@ -33,13 +33,15 @@ function Field(props) {
   };
 
   return (
-    <div className={`float ${props.className}`}>
-      <span className="close">X</span>
+    <div className={`float ${props.className} ${props.isShow ? "show" : ""}`}>
+      <span onClick={props.onHide} className="close">
+        X
+      </span>
       <form onSubmit={addToDo}>
         <h1>Todo Form</h1>
         <Input placeholder="Title" id="title" onChange={setter} />
         <Input placeholder="Content" id="content" onChange={setter} />
-        <button onClick={addToDo}>Add ToDo</button>
+        <button>Add ToDo</button>
       </form>
     </div>
   );

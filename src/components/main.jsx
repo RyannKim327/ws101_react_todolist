@@ -1,6 +1,5 @@
 import "./../stylesheets/main.css";
 import { useEffect, useState } from "react";
-import Field from "./field";
 
 function Main(props) {
   const [todo, setTodo] = useState([]);
@@ -15,12 +14,12 @@ function Main(props) {
     },
     localStorage.getItem("todo") ?? [],
   );
-  const showField = () => {};
+
   return (
     <div className="todo-frame">
       <div>
         <h3>Todo</h3>
-        <button onClick={showField}>Add Todo</button>
+        <button onClick={props.toggleModal}>Add Todo</button>
         {todo.map((item) => {
           return (
             <div>

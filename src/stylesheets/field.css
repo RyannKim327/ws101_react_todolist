@@ -3,8 +3,8 @@
  */
 
 .show {
-  opacity: 1;
-  transform: translate(-50%, -50%);
+  opacity: 1 !important;
+  transform: translate(-50%, -50%) !important;
 }
 
 .float {
@@ -12,7 +12,7 @@
   top: 50%;
   left: 50%;
   z-index: 1;
-  transform: translate(-50%, -100%);
+  transform: translate(-50%, -250%);
 
   border: 1px red solid;
   width: 35%;
@@ -27,8 +27,8 @@
   backdrop-filter: blur(40px);
 
   transition:
-    opacity 0.5s ease-in,
-    transform 0.5s ease-in;
+    opacity 0.5s ease,
+    transform 1.5s ease;
 
   > .close {
     align-self: flex-end;
