@@ -36,13 +36,13 @@ function Main(props) {
   const modifyTodo = (n) => {};
 
   const deleteTodo = (n) => {
-    if (confirm("Are you sure you want to delete this data?")) {
-      let data = localStorage.getItem("todo");
-      if (data) {
-        data = JSON.parse(data);
-        data = data.pop(n);
-        alert(JSON.stringify(data));
-      }
+    // if (confirm("Are you sure you want to delete this data?")) {
+    let data = localStorage.getItem("todo");
+    if (data) {
+      data = JSON.parse(data);
+      data = data.pop(n);
+      alert(JSON.stringify(data));
+      // }
     }
   };
 
