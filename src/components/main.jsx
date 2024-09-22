@@ -33,7 +33,12 @@ function Main(props) {
     }
   };
 
-  const modifyTodo = (n) => {};
+  const modifyTodo = (n) => {
+    let data = localStorage.getItem("todo");
+    if (data) {
+      props.triggerValue(JSON.parse(data), n);
+    }
+  };
 
   const deleteTodo = (n) => {
     // if (confirm("Are you sure you want to delete this data?")) {

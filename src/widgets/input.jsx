@@ -9,6 +9,7 @@ function Input(props) {
         type={props.type ?? "text"}
         placeholder=" "
         onChange={props.onChange}
+        value={props.value}
       />
       <span>{props.placeholder}</span>
     </label>

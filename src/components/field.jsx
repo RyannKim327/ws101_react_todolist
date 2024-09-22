@@ -6,6 +6,15 @@ function Field(props) {
   const [title, setTitle] = useState([]);
   const [content, setContent] = useState([]);
 
+  if (props.modifyValue !== undefined) {
+    if (props.modifyValue.data.length > 0) {
+      // alert(JSON.stringify(props.modifyValue));
+      const d = props.modifyValue.data;
+      setTitle(d.title);
+      setContent(d.content);
+    }
+  }
+
   const setter = () => {
     const _title = document.getElementById("title");
     const _content = document.getElementById("content");
@@ -40,8 +49,13 @@ function Field(props) {
       </span>
       <form onSubmit={addToDo}>
         <h1>Todo Form</h1>
-        <Input placeholder="Title" id="title" onChange={setter} />
-        <Input placeholder="Content" id="content" onChange={setter} />
+        <Input placeholder="Title" id="title" onChange={setter} value={title} />
+        <Input
+          placeholder="Content"
+          id="content"
+          onChange={setter}
+          value={content}
+        />
         <button>Add ToDo</button>
       </form>
     </div>
