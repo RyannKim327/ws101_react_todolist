@@ -5,26 +5,28 @@ import { useEffect, useState } from "react";
 function Field(props) {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  const [tempTitle, setTempTitle] = useState("");
-  const [tempContent, setTempContent] = useState("");
+  const [date, setDate] = useState(0);
 
   useEffect(() => {
     if (props.modifyVal) {
       const e = props.modifyVal.data;
       setTitle(e.title);
       setContent(e.content);
-      setTempTitle(e.title);
-      setTempContent(e.content);
+      setDate(e.time);
     }
   }, [props.modifyVal]);
 
   const addToDo = (e) => {
     let msg = [];
+    const time = new Date(date);
     if (title.length < 4) {
       msg.push("title must be contain atleast 4 characters");
     }
     if (content.length < 10) {
       msg.push("content must be contain atleast 10 characters");
+    }
+    if (time.getTime() <= 10) {
+      msg.push("time and date are invalid");
     }
     if (msg.length > 0) {
       alert(`The ${msg.join(" and ")}.`);
@@ -40,6 +42,7 @@ function Field(props) {
       local.push({
         title: title,
         content: content,
+        time: time.getTime(),
         done: false,
       });
     } else {
@@ -65,19 +68,26 @@ function Field(props) {
           placeholder="Title"
           id="title"
           onChange={(e) => {
-            setTempTitle(e.target.value);
             setTitle(e.target.value);
           }}
-          value={tempTitle}
+          value={title}
         />
         <Input
           placeholder="Content"
           id="content"
           onChange={(e) => {
-            setTempContent(e.target.value);
             setContent(e.target.value);
           }}
-          value={tempContent}
+          value={content}
+        />
+        <Input
+          placeholder="Time and Date"
+          id="time_date"
+          onChange={(e) => {
+            setDate(e.target.value);
+          }}
+          value={date}
+          type="datetime-local"
         />
         <button>Add Todo</button>
       </form>

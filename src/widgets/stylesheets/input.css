@@ -23,7 +23,8 @@
     padding: 0 0.25rem;
     transition:
       transform 0.2s ease,
-      color 0.2s ease;
+      color 0.2s ease,
+      backdrop-filter 0.75s ease;
     transform: translateY(0) scale(1);
   }
 
