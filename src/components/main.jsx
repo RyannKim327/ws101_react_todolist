@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 
 function Main(props) {
   const [todo, setTodo] = useState([]);
+
   useEffect(() => {
     const load_todo = () => {
       let data = localStorage.getItem("todo");
@@ -21,7 +22,7 @@ function Main(props) {
       }
     };
     load_todo();
-  }, []);
+  }, [localStorage.getItem("todo")]);
 
   const done = (n) => {
     let data = localStorage.getItem("todo");
@@ -31,13 +32,15 @@ function Main(props) {
       localStorage.setItem("todo", JSON.stringify(data));
       setTodo(data);
     }
+    return;
   };
 
   const modifyTodo = (n) => {
     let data = localStorage.getItem("todo");
     if (data) {
-      props.triggerValue(JSON.parse(data), n);
+      props.triggerValue(JSON.parse(data)[n], n);
     }
+    return;
   };
 
   const deleteTodo = (n) => {
@@ -45,10 +48,10 @@ function Main(props) {
     let data = localStorage.getItem("todo");
     if (data) {
       data = JSON.parse(data);
-      data = data.pop(n);
-      alert(JSON.stringify(data));
-      // }
+      data = data.splice(n, 1);
     }
+    localStorage.setItem("todo", JSON.stringify(data));
+    return;
   };
 
   return (

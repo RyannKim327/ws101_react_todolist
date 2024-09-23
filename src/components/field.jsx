@@ -1,45 +1,59 @@
 import Input from "./../widgets/input";
 import "./../stylesheets/field.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function Field(props) {
-  const [title, setTitle] = useState([]);
-  const [content, setContent] = useState([]);
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
+  const [tempTitle, setTempTitle] = useState("");
+  const [tempContent, setTempContent] = useState("");
 
-  if (props.modifyValue !== undefined) {
-    if (props.modifyValue.data.length > 0) {
-      // alert(JSON.stringify(props.modifyValue));
-      const d = props.modifyValue.data;
-      setTitle(d.title);
-      setContent(d.content);
+  useEffect(() => {
+    if (props.modifyVal) {
+      console.log(props.modifyVal.data);
+      const e = props.modifyVal.data;
+      console.log(e.title);
+      setTitle(e.title);
+      setContent(e.content);
+      setTempTitle(e.title);
+      setTempContent(e.content);
     }
-  }
+  }, [props.modifyVal]);
 
-  const setter = () => {
-    const _title = document.getElementById("title");
-    const _content = document.getElementById("content");
-
-    if (_title && _content) {
-      setTitle(_title.value);
-      setContent(_content.value);
+  const addToDo = (e) => {
+    let msg = [];
+    if (title.length < 4) {
+      msg.push("title must be contain atleast 4 characters");
     }
-  };
-
-  const addToDo = () => {
-    if (title.length < 4 || content.length < 10) {
-      alert("The minimum text characters for title is 4 and for content is 10");
+    if (content.length < 10) {
+      msg.push("content must be contain atleast 10 characters");
+    }
+    if (msg.length > 0) {
+      alert(`The ${msg.join(" and ")}.`);
+      e.preventDefault();
       return;
     }
+
     let local = JSON.parse(localStorage.getItem("todo") ?? "[]");
     if (!local) {
       local = [];
     }
-    local.push({
-      title: title,
-      content: content,
-      done: false,
-    });
+    if (props.modifyVal.id <= -1) {
+      local.push({
+        title: title,
+        content: content,
+        done: false,
+      });
+    } else {
+      local[props.modifyVal.id] = {
+        title: title,
+        content: content,
+        done: props.modifyVal.data.done,
+      };
+    }
     localStorage.setItem("todo", JSON.stringify(local));
+    props.onHide();
+    e.preventDefault();
   };
 
   return (
@@ -49,12 +63,23 @@ function Field(props) {
       </span>
       <form onSubmit={addToDo}>
         <h1>Todo Form</h1>
-        <Input placeholder="Title" id="title" onChange={setter} value={title} />
+        <Input
+          placeholder="Title"
+          id="title"
+          onChange={(e) => {
+            setTempTitle(e.target.value);
+            setTitle(e.target.value);
+          }}
+          value={tempTitle}
+        />
         <Input
           placeholder="Content"
           id="content"
-          onChange={setter}
-          value={content}
+          onChange={(e) => {
+            setTempContent(e.target.value);
+            setContent(e.target.value);
+          }}
+          value={tempContent}
         />
         <button>Add ToDo</button>
       </form>
