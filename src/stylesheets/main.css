@@ -71,4 +71,33 @@
  */
 
 @media (prefers-color-scheme: dark) {
+  .todo-frame {
+    background-color: rgb(33, 33, 33);
+
+    > div {
+      color: white;
+
+      > button {
+        background-color: rgb(33, 33, 33);
+        color: white;
+        border: 1px white solid;
+      }
+      > div {
+        border: 1px white solid;
+        > div {
+          > button {
+            background-color: transparent;
+            color: white;
+            border: 1px white solid;
+          }
+        }
+      }
+
+      > .done {
+        border: 1px rgb(33, 55, 33) solid;
+        background-color: rgba(33, 55, 33, 0.5);
+        box-shadow: 1px 1px 3px rgba(100, 255, 100, 1);
+      }
+    }
+  }
 }

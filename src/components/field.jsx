@@ -10,9 +10,7 @@ function Field(props) {
 
   useEffect(() => {
     if (props.modifyVal) {
-      console.log(props.modifyVal.data);
       const e = props.modifyVal.data;
-      console.log(e.title);
       setTitle(e.title);
       setContent(e.content);
       setTempTitle(e.title);
@@ -81,7 +79,7 @@ function Field(props) {
           }}
           value={tempContent}
         />
-        <button>Add ToDo</button>
+        <button>Add Todo</button>
       </form>
     </div>
   );
