@@ -88,10 +88,6 @@
         border: 1px white solid;
         color: white;
         background-color: transparent;
-
-        > input {
-          color: white;
-        }
       }
     }
   }

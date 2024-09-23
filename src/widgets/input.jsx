@@ -2,7 +2,7 @@ import "./stylesheets/input.css";
 
 function Input(props) {
   return (
-    <label className={`wrapper ${props.className}`}>
+    <label className={`wrapper ${props.className ?? ""}`}>
       <input
         id={props.id}
         name={props.name}
