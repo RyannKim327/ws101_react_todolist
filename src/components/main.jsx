@@ -13,6 +13,7 @@ function Main(props) {
           if (a.done === b.done) {
             return 0;
           }
+          // TODO: To sort by done
           return a.done ? 1 : -1;
         });
         localStorage.setItem("todo", JSON.stringify(data));
@@ -48,7 +49,7 @@ function Main(props) {
     let data = localStorage.getItem("todo");
     if (data) {
       data = JSON.parse(data);
-      data = data.splice(n, 1);
+      data = data.splice(n + 1, 1);
     }
     localStorage.setItem("todo", JSON.stringify(data));
     return;
